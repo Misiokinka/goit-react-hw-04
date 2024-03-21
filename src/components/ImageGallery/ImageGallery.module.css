@@ -1,0 +1,9 @@
+.imageGalleryList {
+    display: grid;
+    max-width: calc(-48px + 100vw);
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    gap: 16px;
+    margin: 0px auto;
+    padding: 84px 0px 0px;
+
+}

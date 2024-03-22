@@ -1,14 +1,12 @@
-import React, { useMemo } from 'react';
+
 import css from "./ImageCard.module.css";
 
 const ImageCard = (props) => {
-    const { src, alt } = props;
+    const { src, alt, modalOpen, image } = props;
 
-    const imageItem = useMemo(() => {
-        return <img className={css.imageItem} width={200} height={200} src={src} alt={alt} />;
-    }, [src, alt]);
-
-    return <>{imageItem}</>;
+    return <img className={css.imageItem} width={200} height={200} src={src} alt={alt} onClick={() => {
+        modalOpen(image)
+    }} />;;
 };
 
 export default ImageCard;

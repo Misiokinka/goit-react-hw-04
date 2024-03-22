@@ -8,6 +8,7 @@ import SearchBar from './SearchBar/SearchBar';
 import { requestImagesByQuery } from "../services/api"
 import ImageModal from './ImageModal/ImageModal';
 import LoadMoreBtn from './LoadMoreBtn/LoadMoreBtn';
+import ImageCard from './ImageCard/ImageCard';
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -33,6 +34,7 @@ const App = () => {
     }
   };
 
+
   useEffect(() => {
     fetchData(searchQuery, false);
 
@@ -47,6 +49,11 @@ const App = () => {
     setPage(prevPage => prevPage + 1);
   };
 
+  const modalOpen = (image) => {
+    setModalIsOpen(true);
+    setSelectedImage(image);
+  }
+
   return (
     <>
       <SearchBar onSetSearchQuery={onSetSearchQuery}
@@ -58,8 +65,7 @@ const App = () => {
         <>
           <ImageGallery
             images={images}
-            setModalIsOpen={setModalIsOpen}
-            setSelectedImage={setSelectedImage}
+            modalOpen={modalOpen}
           />
           <LoadMoreBtn handleLoadMore={handleLoadMore} />
         </>
@@ -71,6 +77,7 @@ const App = () => {
           setModalIsOpen={setModalIsOpen}
         />
       }
+     
     </>
   );
 };
